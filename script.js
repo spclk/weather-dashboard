@@ -32,19 +32,18 @@ function todaysWeather (city){
       return response.json()
     })
     .then(function (data) {
-      console.log(data);
       var nameOfCity = $("<p>");
       var date = $("<p>");
       var temperature = $("<p>");
       var humidity = $("<p>");
       var windSpeed = $("<p>");
       var currentIcon = $("<img>");
-      $(currentWeather).append(nameOfCity, currentIcon, date, temperature, humidity, windSpeed);
+      $(currentWeather).append(date, nameOfCity, currentIcon, temperature, humidity, windSpeed);
       date.text(today);
       nameOfCity.text(data.name)
-      temperature.text("temperature: " + data.main.temp);
-      humidity.text("humidity: " + data.main.humidity);
-      windSpeed.text("wind speed: " + data.wind.speed);
+      temperature.text("Temperature: " + data.main.temp + "˚F");
+      humidity.text("Humidity: " + data.main.humidity + "%");
+      windSpeed.text("Wind speed: " + data.wind.speed + " MPH");
 
       currentIcon.attr("src","http://openweathermap.org/img/wn/" + data.weather[0].icon +"@2x.png")
       
@@ -59,7 +58,6 @@ function todaysWeather (city){
           return response.json()
         })
         .then(function (data) {
-          console.log(data);
           var indexUV = $("<p>");
           $(currentWeather).append(indexUV);
           indexUV.text("UV index: " + data.current.uvi);
@@ -71,8 +69,8 @@ function todaysWeather (city){
           var forecastHumidity1 = $("<p>");
           $(forecast1).append(date1, forecastIcon1, forecastTemperature1, forecastHumidity1);
             date1.text(moment().add(1, 'days').format("dddd, MMMM Do YYYY")); 
-            forecastTemperature1.text("temp: " + data.daily[1].temp.day);
-            forecastHumidity1.text("hum: " + data.daily[1].humidity);
+            forecastTemperature1.text("Temp: " + data.daily[1].temp.day + "˚F");
+            forecastHumidity1.text("Humidity: " + data.daily[1].humidity + "%");
             forecastIcon1.attr("src","http://openweathermap.org/img/wn/" + data.daily[1].weather[0].icon +"@2x.png")
           
           // Day 2
@@ -82,8 +80,8 @@ function todaysWeather (city){
           var forecastHumidity2 = $("<p>");
           $(forecast2).append(date2, forecastIcon2, forecastTemperature2, forecastHumidity2);
             date2.text(moment().add(2, 'days').format("dddd, MMMM Do YYYY"));
-            forecastTemperature2.text("temp: " + data.daily[2].temp.day);
-            forecastHumidity2.text("hum: " + data.daily[2].humidity);
+            forecastTemperature2.text("Temp: " + data.daily[2].temp.day + "˚F");
+            forecastHumidity2.text("Humidity: " + data.daily[2].humidity + "%");
             forecastIcon2.attr("src","http://openweathermap.org/img/wn/" + data.daily[2].weather[0].icon +"@2x.png")
           
           // Day 3
@@ -93,8 +91,8 @@ function todaysWeather (city){
           var forecastHumidity3 = $("<p>");
           $(forecast3).append(date3, forecastIcon3, forecastTemperature3, forecastHumidity3);
             date3.text(moment().add(3, 'days').format("dddd, MMMM Do YYYY"));
-            forecastTemperature3.text("temp: " + data.daily[3].temp.day);
-            forecastHumidity3.text("hum: " + data.daily[3].humidity);
+            forecastTemperature3.text("Temp: " + data.daily[3].temp.day + "˚F");
+            forecastHumidity3.text("Humidity: " + data.daily[3].humidity + "%");
             forecastIcon3.attr("src","http://openweathermap.org/img/wn/" + data.daily[3].weather[0].icon +"@2x.png")
 
           // Day 4
@@ -104,8 +102,8 @@ function todaysWeather (city){
           var forecastHumidity4 = $("<p>");
           $(forecast4).append(date4, forecastIcon4, forecastTemperature4, forecastHumidity4);
             date4.text(moment().add(4, 'days').format("dddd, MMMM Do YYYY"));
-            forecastTemperature4.text("temp: " + data.daily[4].temp.day);
-            forecastHumidity4.text("hum: " + data.daily[4].humidity);
+            forecastTemperature4.text("Temp: " + data.daily[4].temp.day + "˚F");
+            forecastHumidity4.text("Humidity: " + data.daily[4].humidity + "%");
             forecastIcon4.attr("src","http://openweathermap.org/img/wn/" + data.daily[4].weather[0].icon +"@2x.png")
 
           // Day 5
@@ -115,31 +113,27 @@ function todaysWeather (city){
           var forecastHumidity5 = $("<p>");
           $(forecast5).append(date5, forecastIcon5, forecastTemperature5, forecastHumidity5);
             date5.text(moment().add(5, 'days').format("dddd, MMMM Do YYYY"));
-            forecastTemperature5.text("temp: " + data.daily[5].temp.day);
-            forecastHumidity5.text("hum: " + data.daily[5].humidity);
+            forecastTemperature5.text("Temp: " + data.daily[5].temp.day + "˚F");
+            forecastHumidity5.text("Humidity: " + data.daily[5].humidity + "%");
             forecastIcon5.attr("src","http://openweathermap.org/img/wn/" + data.daily[5].weather[0].icon +"@2x.png")
         }); 
     });
 };
 
-// function forecastWeather(lat,lon) {
-//   var secondAPI = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
-// }
-
-
+// Event Listener for initial search
 searchEntry.addEventListener("click", function(event){
   var searchCity = $("#search").val()
   todaysWeather(searchCity)
   var recentButton = document.createElement("button");
-  recentButton.textContent = searchCity
-  searchHistory.appendChild(recentButton)
+  recentButton.textContent = searchCity;
+  searchHistory.appendChild(recentButton);
 });
 
-$("#recent").on("click", "button", function(event){
+// Event listener for previously searched cities
+$("#recent").on("click", function(event){
   console.log(event.target);
+  var recentlySearched = $(event.target).text();
+  $("#recent").val(recentlySearched);
+  todaysWeather(recentlySearched);{
+  }
 })
-
-
-
-// localStorage.setItem();
-// localStorage.getItem();
