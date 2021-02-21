@@ -73,6 +73,7 @@ function todaysWeather (city){
             date1.text(moment().add(1, 'days').format("dddd, MMMM Do YYYY")); 
             forecastTemperature1.text("temp: " + data.daily[1].temp.day);
             forecastHumidity1.text("hum: " + data.daily[1].humidity);
+            forecastIcon1.attr("src","http://openweathermap.org/img/wn/" + data.daily[1].weather[0].icon +"@2x.png")
           
           // Day 2
           var date2 = $("<p>");
@@ -83,6 +84,7 @@ function todaysWeather (city){
             date2.text(moment().add(2, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature2.text("temp: " + data.daily[2].temp.day);
             forecastHumidity2.text("hum: " + data.daily[2].humidity);
+            forecastIcon2.attr("src","http://openweathermap.org/img/wn/" + data.daily[2].weather[0].icon +"@2x.png")
           
           // Day 3
           var date3 = $("<p>");
@@ -93,6 +95,7 @@ function todaysWeather (city){
             date3.text(moment().add(3, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature3.text("temp: " + data.daily[3].temp.day);
             forecastHumidity3.text("hum: " + data.daily[3].humidity);
+            forecastIcon3.attr("src","http://openweathermap.org/img/wn/" + data.daily[3].weather[0].icon +"@2x.png")
 
           // Day 4
           var date4 = $("<p>");
@@ -103,6 +106,7 @@ function todaysWeather (city){
             date4.text(moment().add(4, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature4.text("temp: " + data.daily[4].temp.day);
             forecastHumidity4.text("hum: " + data.daily[4].humidity);
+            forecastIcon4.attr("src","http://openweathermap.org/img/wn/" + data.daily[4].weather[0].icon +"@2x.png")
 
           // Day 5
           var date5 = $("<p>");
@@ -113,6 +117,7 @@ function todaysWeather (city){
             date5.text(moment().add(5, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature5.text("temp: " + data.daily[5].temp.day);
             forecastHumidity5.text("hum: " + data.daily[5].humidity);
+            forecastIcon5.attr("src","http://openweathermap.org/img/wn/" + data.daily[5].weather[0].icon +"@2x.png")
         }); 
     });
 };
