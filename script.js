@@ -32,8 +32,8 @@ function todaysWeather (city){
       return response.json()
     })
     .then(function (data) {
-      var nameOfCity = $("<p>");
-      var date = $("<p>");
+      var nameOfCity = $("<h4>");
+      var date = $("<h6>");
       var temperature = $("<p>");
       var humidity = $("<p>");
       var windSpeed = $("<p>");

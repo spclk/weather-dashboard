@@ -1,0 +1,16 @@
+
+#current{
+   text-align: center;
+}
+
+button{
+    border: 1px rgb(238, 238, 229) solid;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    color:white;
+    font-size: 15pt;
+    background-color: #1e88e5;
+    margin: 5px 20px;
+    
+}
