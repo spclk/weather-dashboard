@@ -15,7 +15,17 @@ var cityName = "";
 // First API - current weather
 function todaysWeather (city){
   cityName = city;
+  //Moment.js API for dates
   var query = currentWeatherURL + cityName + weatherKey;
+  var today = moment().format("dddd, MMMM Do YYYY");
+
+  //Clearing out cards before populating each search result
+  currentWeather.innerHTML = "";
+  forecast1.innerHTML = "";
+  forecast2.innerHTML = "";
+  forecast3.innerHTML = "";
+  forecast4.innerHTML = "";
+  forecast5.innerHTML = "";
 
   fetch(query)
     .then(function (response) {
@@ -29,11 +39,14 @@ function todaysWeather (city){
       var humidity = $("<p>");
       var windSpeed = $("<p>");
       var currentIcon = $("<img>");
-      $(currentWeather).append(currentIcon, nameOfCity, date, temperature, humidity, windSpeed); // need to add icons
+      $(currentWeather).append(nameOfCity, currentIcon, date, temperature, humidity, windSpeed);
+      date.text(today);
       nameOfCity.text(data.name)
       temperature.text("temperature: " + data.main.temp);
       humidity.text("humidity: " + data.main.humidity);
       windSpeed.text("wind speed: " + data.wind.speed);
+
+      currentIcon.attr("src","http://openweathermap.org/img/wn/" + data.weather[0].icon +"@2x.png")
       
       var latitude = data.coord.lat;
       var longitude = data.coord.lon;
@@ -57,7 +70,7 @@ function todaysWeather (city){
           var forecastTemperature1 = $("<p>");
           var forecastHumidity1 = $("<p>");
           $(forecast1).append(date1, forecastIcon1, forecastTemperature1, forecastHumidity1);
-            date1.text("tomorrow"); // need to repalce with dates
+            date1.text(moment().add(1, 'days').format("dddd, MMMM Do YYYY")); 
             forecastTemperature1.text("temp: " + data.daily[1].temp.day);
             forecastHumidity1.text("hum: " + data.daily[1].humidity);
           
@@ -67,7 +80,7 @@ function todaysWeather (city){
           var forecastTemperature2 = $("<p>");
           var forecastHumidity2 = $("<p>");
           $(forecast2).append(date2, forecastIcon2, forecastTemperature2, forecastHumidity2);
-            date2.text("date"); // need to repalce with dates
+            date2.text(moment().add(2, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature2.text("temp: " + data.daily[2].temp.day);
             forecastHumidity2.text("hum: " + data.daily[2].humidity);
           
@@ -77,7 +90,7 @@ function todaysWeather (city){
           var forecastTemperature3 = $("<p>");
           var forecastHumidity3 = $("<p>");
           $(forecast3).append(date3, forecastIcon3, forecastTemperature3, forecastHumidity3);
-            date3.text("date"); // need to repalce with dates
+            date3.text(moment().add(3, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature3.text("temp: " + data.daily[3].temp.day);
             forecastHumidity3.text("hum: " + data.daily[3].humidity);
 
@@ -87,7 +100,7 @@ function todaysWeather (city){
           var forecastTemperature4 = $("<p>");
           var forecastHumidity4 = $("<p>");
           $(forecast4).append(date4, forecastIcon4, forecastTemperature4, forecastHumidity4);
-            date4.text("date"); // need to repalce with dates
+            date4.text(moment().add(4, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature4.text("temp: " + data.daily[4].temp.day);
             forecastHumidity4.text("hum: " + data.daily[4].humidity);
 
@@ -97,7 +110,7 @@ function todaysWeather (city){
           var forecastTemperature5 = $("<p>");
           var forecastHumidity5 = $("<p>");
           $(forecast5).append(date5, forecastIcon5, forecastTemperature5, forecastHumidity5);
-            date5.text("date"); // need to repalce with dates
+            date5.text(moment().add(5, 'days').format("dddd, MMMM Do YYYY"));
             forecastTemperature5.text("temp: " + data.daily[5].temp.day);
             forecastHumidity5.text("hum: " + data.daily[5].humidity);
         }); 
@@ -108,7 +121,6 @@ function todaysWeather (city){
 //   var secondAPI = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
 // }
 
-  // second api provides UV Index
 
 searchEntry.addEventListener("click", function(event){
   var searchCity = $("#search").val()
@@ -118,7 +130,10 @@ searchEntry.addEventListener("click", function(event){
   searchHistory.appendChild(recentButton)
 });
 
-// function that pulls 5-day forecast 
+$("#recent").on("click", "button", function(event){
+  console.log(event.target);
+})
+
 
 
 // localStorage.setItem();
