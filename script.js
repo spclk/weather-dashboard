@@ -33,10 +33,10 @@ function todaysWeather (city){
     })
     .then(function (data) {
       var nameOfCity = $("<h4>");
-      var date = $("<h6>");
-      var temperature = $("<p>");
-      var humidity = $("<p>");
-      var windSpeed = $("<p>");
+      var date = $("<h5>");
+      var temperature = $("<h6>");
+      var humidity = $("<h6>");
+      var windSpeed = $("<h6>");
       var currentIcon = $("<img>");
       $(currentWeather).append(date, nameOfCity, currentIcon, temperature, humidity, windSpeed);
       date.text(today);
@@ -58,7 +58,7 @@ function todaysWeather (city){
           return response.json()
         })
         .then(function (data) {
-          var indexUV = $("<p>");
+          var indexUV = $("<h6>");
           $(currentWeather).append(indexUV);
           indexUV.text("UV index: " + data.current.uvi);
           

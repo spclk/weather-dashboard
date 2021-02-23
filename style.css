@@ -5,12 +5,16 @@
 
 button{
     border: 1px rgb(238, 238, 229) solid;
-    border-radius: 30px;
-    cursor: pointer;
+    border-radius: 40px;
     text-align: center;
     color:white;
-    font-size: 15pt;
-    background-color: #1e88e5;
+    font-size: 17pt;
+    background-color: #546e7a;
     margin: 5px 20px;
     
 }
+
+h5{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.288);
+    padding-bottom: 20px;
+  }
