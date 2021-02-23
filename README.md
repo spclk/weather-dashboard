@@ -21,10 +21,10 @@ This project features my work with the following:
 * Moment.js
 
 ## How it Works
-Type in a city in the search bar and the app will dinamically update current weather information and a future forecast.
+Type in a city in the search bar and the app will dynamically update current weather information and a future forecast.
 
 ## How it Looks
 
-![screenshot](screenshot.png)
-```
+![screenshot](Screenshot.png)
+
 [Click here to check it out for yourself](https://spclk.github.io/weather-dashboard/)
