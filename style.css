@@ -4,13 +4,14 @@
 }
 
 button{
+    float: left;
     border: 1px rgb(238, 238, 229) solid;
     border-radius: 40px;
     text-align: center;
     color:white;
     font-size: 17pt;
     background-color: #546e7a;
-    margin: 5px 40px;
+    margin: 5px 70px;
     
 }
 
